@@ -11,7 +11,7 @@ String path = "dirToLookAt"
 new File(__FILE__).parentFile.eachFileRecurse {
     if(it.name.endsWith('.yaml')) {
         yaml = new Yaml()
-        map = (Map) yaml.load(readFileFromWorkspace(it.absolutePath))
+        map = (Map) yaml.loadAll(readFileFromWorkspace(it.absolutePath))
         println map
 //        jobName = map.jobName
 
