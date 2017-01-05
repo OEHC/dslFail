@@ -4,7 +4,6 @@ package dsl
 import org.yaml.snakeyaml.Yaml
 
 Yaml yaml
-Map map
 String jobName
 
 String path = "dirToLookAt"
@@ -13,7 +12,7 @@ new File(__FILE__).parentFile.eachFileRecurse {
         yaml = new Yaml()
         for (LinkedHashMap m : yaml.loadAll(readFileFromWorkspace(it.absolutePath))) {
             println m
-            jobName = map.jobName
+            jobName = m.jobName
 
             job("${jobName}") {
                 scm {
