@@ -12,8 +12,8 @@ new File(__FILE__).parentFile.eachFileRecurse {
     if(it.name.endsWith('.yaml')) {
         yaml = new Yaml()
 //        map = (Map)
-        for (Yaml y : yaml.loadAll(readFileFromWorkspace(it.absolutePath))) {
-            println y
+        for (LinkedHashMap m : yaml.loadAll(readFileFromWorkspace(it.absolutePath))) {
+            println m
         }
         println map
 //        jobName = map.jobName
