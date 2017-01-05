@@ -3,22 +3,26 @@ package dsl
 @Grab(group='org.yaml', module='snakeyaml', version='1.16')
 import org.yaml.snakeyaml.Yaml
 
-String configFile = readFileFromWorkspace("config.yaml")
+Yaml yaml
+Map map
+String jobName
 
-Yaml yaml = new Yaml()
-Map map = (Map) yaml.load(configFile)
+String path = "dirToLookAt"
+new File(path).eachFileRecurse {
+    yaml = new Yaml()
+    map = (Map) yaml.load(readFileFromWorkspace(it))
+    jobName = map.jobName
 
-String jobName = map.get("jobName")
+    job("${jobName}") {
+        scm {
+            git("https://github.com/OEHC/dsl", "*/master")
+        }
 
-job("${jobName}") {
-    scm {
-        git("https://github.com/OEHC/dsl", "*/master")
-    }
-
-    triggers {
-        scmTrigger {
-            scmpoll_spec("")
-            ignorePostCommitHooks(false)
+        triggers {
+            scmTrigger {
+                scmpoll_spec("")
+                ignorePostCommitHooks(false)
+            }
         }
     }
 }
