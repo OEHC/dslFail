@@ -3,7 +3,7 @@ package dsl
 @Grab(group='org.yaml', module='snakeyaml', version='1.16')
 import org.yaml.snakeyaml.Yaml
 
-def useThis = readFileFromWorkspace("src/main/groovy/projects/Configure.groovy")
+def useThis = readFileFromWorkspace("config.yaml")
 
 String configFile = useThis.text
 
@@ -24,5 +24,3 @@ println """job("${jobName}") {
         }
     }
 }"""
-
-println "pwd".execute().text
