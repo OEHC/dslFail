@@ -8,7 +8,7 @@ Map map
 String jobName
 
 String path = "dirToLookAt"
-new File(path).eachFileRecurse {
+new File(readFileFromWorkspace(path)).eachFileRecurse {
     if(it.name.endsWith('.yaml')) {
         println it
         yaml = new Yaml()
