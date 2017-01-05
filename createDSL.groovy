@@ -15,6 +15,7 @@ new File(__FILE__).parentFile.eachFileRecurse {
         println map
         jobName = map.jobName
 
+        println """
         job("${jobName}") {
             scm {
                 git("https://github.com/OEHC/dsl", "*/master")
@@ -26,6 +27,6 @@ new File(__FILE__).parentFile.eachFileRecurse {
                     ignorePostCommitHooks(false)
                 }
             }
-        }
+        }"""
     }
 }
