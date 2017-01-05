@@ -1,4 +1,4 @@
-job("TestJob") {
+job("DSLJob") {
     scm {
         git("https://github.com/OEHC/dsl", "*/master")
     }
