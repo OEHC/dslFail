@@ -6,9 +6,10 @@ import org.yaml.snakeyaml.Yaml
 Yaml yaml
 String jobName
 
-String path = "dirToLookAt"
+String dir = 'dirToLookAt'
+
 new File(__FILE__).parentFile.eachFileRecurse {
-    if(it.name.endsWith('.yaml')) {
+    if(it.name.matches("${dir}/**.yaml")) {
         yaml = new Yaml()
         for (LinkedHashMap m : yaml.loadAll(readFileFromWorkspace(it.absolutePath))) {
             println m
@@ -28,4 +29,9 @@ new File(__FILE__).parentFile.eachFileRecurse {
             }
         }
     }
+}
+
+private LinkedHashMap[] readYaml() {
+
+    return new LinkedHashMap[1]
 }
