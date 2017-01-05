@@ -8,11 +8,11 @@ Map map
 String jobName
 
 String path = "dirToLookAt"
-new File(new File(__FILE__).parent).eachFileRecurse {
+new File(__FILE__).parentFile.eachFileRecurse {
     if(it.name.endsWith('.yaml')) {
-        println it
         yaml = new Yaml()
         map = (Map) yaml.load(readFileFromWorkspace(it.absolutePath))
+        println map
         jobName = map.jobName
 
         job("${jobName}") {
