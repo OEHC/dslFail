@@ -10,7 +10,7 @@ Map map = (Map) yaml.load(configFile)
 
 String jobName = map.get("jobName")
 
-println """job("${jobName}") {
+println """job("sdf") {
     scm {
         git("https://github.com/OEHC/dsl", "*/master")
     }
