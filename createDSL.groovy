@@ -10,7 +10,7 @@ Map map = (Map) yaml.load(configFile)
 
 String jobName = map.get("jobName")
 
-println """job("sdf") {
+job("${jobName}") {
     scm {
         git("https://github.com/OEHC/dsl", "*/master")
     }
@@ -21,4 +21,4 @@ println """job("sdf") {
             ignorePostCommitHooks(false)
         }
     }
-}"""
+}
