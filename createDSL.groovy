@@ -11,25 +11,22 @@ String path = "dirToLookAt"
 new File(__FILE__).parentFile.eachFileRecurse {
     if(it.name.endsWith('.yaml')) {
         yaml = new Yaml()
-//        map = (Map)
         for (LinkedHashMap m : yaml.loadAll(readFileFromWorkspace(it.absolutePath))) {
             println m
-        }
-        println map
-//        jobName = map.jobName
+            jobName = map.jobName
 
-        println """
-        job("${jobName}") {
-            scm {
-                git("https://github.com/OEHC/dsl", "*/master")
-            }
+            job("${jobName}") {
+                scm {
+                    git("https://github.com/OEHC/dsl", "*/master")
+                }
 
-            triggers {
-                scmTrigger {
-                    scmpoll_spec("")
-                    ignorePostCommitHooks(false)
+                triggers {
+                    scmTrigger {
+                        scmpoll_spec("")
+                        ignorePostCommitHooks(false)
+                    }
                 }
             }
-        }"""
+        }
     }
 }
