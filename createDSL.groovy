@@ -13,7 +13,7 @@ new File(__FILE__).parentFile.eachFileRecurse {
         yaml = new Yaml()
         map = (Map) yaml.load(readFileFromWorkspace(it.absolutePath))
         println map
-        jobName = map.jobName
+//        jobName = map.jobName
 
         println """
         job("${jobName}") {
