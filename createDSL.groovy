@@ -3,7 +3,7 @@ package dsl
 @Grab(group='org.yaml', module='snakeyaml', version='1.16')
 import org.yaml.snakeyaml.Yaml
 
-String configFile = new File("config.yaml").text
+String configFile = new File("./config.yaml").text
 
 Yaml yaml = new Yaml()
 Map map = (Map) yaml.load(configFile)
