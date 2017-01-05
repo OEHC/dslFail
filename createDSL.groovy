@@ -9,19 +9,22 @@ String jobName
 
 String path = "dirToLookAt"
 new File(path).eachFileRecurse {
-    yaml = new Yaml()
-    map = (Map) yaml.load(readFileFromWorkspace(it))
-    jobName = map.jobName
+    if(it.name.endsWith('.yaml')) {
+        println it
+        yaml = new Yaml()
+        map = (Map) yaml.load(readFileFromWorkspace(it))
+        jobName = map.jobName
 
-    job("${jobName}") {
-        scm {
-            git("https://github.com/OEHC/dsl", "*/master")
-        }
+        job("${jobName}") {
+            scm {
+                git("https://github.com/OEHC/dsl", "*/master")
+            }
 
-        triggers {
-            scmTrigger {
-                scmpoll_spec("")
-                ignorePostCommitHooks(false)
+            triggers {
+                scmTrigger {
+                    scmpoll_spec("")
+                    ignorePostCommitHooks(false)
+                }
             }
         }
     }
