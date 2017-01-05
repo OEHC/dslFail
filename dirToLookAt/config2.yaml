@@ -1,1 +1,4 @@
-[jobName: yamlJob3],[jobName: yamlJob4]
+---
+jobName: yamlJob3
+---
+jobName: yamlJob4
