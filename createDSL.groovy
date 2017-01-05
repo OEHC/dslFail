@@ -9,7 +9,7 @@ String jobName
 String dir = 'dirToLookAt'
 
 new File(__FILE__).parentFile.eachFileRecurse {
-    if(it.name.matches(".*/${dir}/.*[.]yaml")) {
+    if(it.name.matches(".*/" + dir + "/.*[.]yaml")) {
         yaml = new Yaml()
         for (LinkedHashMap m : yaml.loadAll(readFileFromWorkspace(it.absolutePath))) {
             println m
