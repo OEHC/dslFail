@@ -14,6 +14,8 @@ new File(__FILE__).parentFile.eachFileRecurse {
 //        map = (Map)
         for (String s : yaml.loadAll(readFileFromWorkspace(it.absolutePath))) {
             println s
+            map = (Map) s
+            println map
         }
         println map
 //        jobName = map.jobName
