@@ -12,7 +12,7 @@ new File(new File(__FILE__).parent).eachFileRecurse {
     if(it.name.endsWith('.yaml')) {
         println it
         yaml = new Yaml()
-        map = (Map) yaml.load(readFileFromWorkspace(it))
+        map = (Map) yaml.load(readFileFromWorkspace(it.absolutePath))
         jobName = map.jobName
 
         job("${jobName}") {
